@@ -6,8 +6,19 @@ FindSequenceOfNumbersAndTurnRed(text);
 
 static void FindSequenceOfNumbersAndTurnRed (string mainString)
 {
-    for (int i = 0; i < mainString.Length; i++)
-    {
+    char[] charactersArray = mainString.ToCharArray();
+    int[] redNumbersArray = new int[mainString.Length];
 
+    foreach (char c in charactersArray)
+    {  
+        if (char.IsDigit(c))
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+        }
+        else
+        {
+            Console.ForegroundColor = ConsoleColor.Gray;
+        }
+        Console.Write(c);
     }
 }
