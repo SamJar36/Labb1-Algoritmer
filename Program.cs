@@ -1,24 +1,25 @@
 ﻿using System;
 
-Console.WriteLine("Enter a bunch of numbers");
-string text = Console.ReadLine();
-FindSequenceOfNumbersAndTurnRed(text);
-
-static void FindSequenceOfNumbersAndTurnRed (string mainString)
+class Program
 {
-    char[] charactersArray = mainString.ToCharArray();
-    int[] redNumbersArray = new int[mainString.Length];
+    static void Main(string[] args)
+    {
+        Console.WriteLine("Enter a bunch of numbers");
+        string text = Console.ReadLine();
+        FindSequenceOfNumbersAndTurnRed(text);
 
-    foreach (char c in charactersArray)
-    {  
-        if (char.IsDigit(c))
+        static void FindSequenceOfNumbersAndTurnRed(string mainString)
         {
-            Console.ForegroundColor = ConsoleColor.Red;
+            char[] charsArray = mainString.ToCharArray();
+            int[] redArray = new int[mainString.Length];
+
+            foreach (char c in charsArray)
+            {
+                if (char.IsDigit(c))
+                {
+                
+                }
+            }
         }
-        else
-        {
-            Console.ForegroundColor = ConsoleColor.Gray;
-        }
-        Console.Write(c);
     }
 }
