@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.InteropServices;
 
 class Program
 {
@@ -10,14 +11,20 @@ class Program
 
         static void FindSequenceOfNumbersAndTurnRed(string mainString)
         {
-            char[] charsArray = mainString.ToCharArray();
-            int[] redArray = new int[mainString.Length];
-
-            foreach (char c in charsArray)
+            for (int i = 0; i < mainString.Length; i++)
             {
-                if (char.IsDigit(c))
+                if (char.IsDigit(mainString[i]))
                 {
-                
+                    char currentNumber = mainString[i];
+                    int nextIndex = mainString.IndexOf(currentNumber, i);
+
+                    string firstSub = mainString.Substring(0, i);
+                    string redSub = mainString.Substring(currentNumber, nextIndex);
+                    string lastSub = mainString.Substring(nextIndex + redSub.Length);
+
+                    string totalString = firstSub + "\u001b[31m" + redSub + "\u001b[0m" + lastSub;
+
+                    Console.WriteLine(totalString);
                 }
             }
         }
