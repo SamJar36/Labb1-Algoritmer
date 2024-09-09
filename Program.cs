@@ -11,7 +11,7 @@ class Program
 
         static void FindSequenceOfNumbersAndTurnRed(string mainString)
         {
-            List<int> numbers = new List<int>();
+            List<ulong> numbers = new List<ulong>();
             Console.WriteLine();
             for (int i = 0; i < mainString.Length; i++)
             {
@@ -21,7 +21,7 @@ class Program
                     // Sets the current number and searches for the next one as well
                     char currentNumber = mainString[i];
                     int nextIndex = mainString.IndexOf(currentNumber, i + 1);
-                    int redLength = nextIndex - i + 1;
+                    int redLength = (nextIndex - i) + 1;
 
                     // nextIndex becomes -1 by default if it can't find the next index
                     if (nextIndex != -1)
@@ -36,15 +36,15 @@ class Program
 
                         Console.WriteLine(totalString);
 
-                        int currentNumbers = Int32.Parse(redSub);
+                        ulong currentNumbers = UInt64.Parse(redSub);
                         numbers.Add(currentNumbers);
                     }
                 }          
             }
-            int result = 0;
-            foreach (int number in numbers)
+            ulong result = 0;
+            foreach (ulong number in numbers)
             {
-                result += number;
+                result += (ulong)number;
             }
             Console.WriteLine();
             Console.WriteLine($"The total of all highlighted numbers are: {result}");
