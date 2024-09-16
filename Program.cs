@@ -13,21 +13,22 @@ class Program
         {
             List<ulong> numbers = new List<ulong>();
             Console.WriteLine();
-            for (int i = 0; i < mainString.Length; i++)
+            for (int startIndex = 0; startIndex < mainString.Length; startIndex++)
             {
-                if (char.IsDigit(mainString[i]))
+                char startNumber = mainString[startIndex];
+                
+                if (char.IsDigit(startNumber))
                 {
-                    char currentNumber = mainString[i];
-                    int nextIndex = mainString.IndexOf(currentNumber, i + 1);
-                    int redLength = (nextIndex - i) + 1;
+                    int nextIndex = mainString.IndexOf(startNumber, startIndex + 1);
+                    int redLength = (nextIndex - startIndex) + 1;
 
                     if (nextIndex != -1)
                     {
                         bool hasLetters = false;
-                        for (int j = i + 1; j < nextIndex; j++)
+                        for (int j = startIndex + 1; j < nextIndex; j++)
                         {
-                            
-                            if (char.IsLetter(mainString[j]) || !char.IsLetterOrDigit(mainString[j]))
+                            char currentChar = mainString[j];
+                            if (char.IsLetter(currentChar) || !char.IsLetterOrDigit(currentChar))
                             {
                                 hasLetters = true;
                                 break;
@@ -35,9 +36,9 @@ class Program
                         }
                         if (!hasLetters)
                         {
-                            string firstSub = mainString.Substring(0, i);
-                            string redSub = mainString.Substring(i, redLength);
-                            string lastSub = mainString.Substring(i + redSub.Length);
+                            string firstSub = mainString.Substring(0, startIndex);
+                            string redSub = mainString.Substring(startIndex, redLength);
+                            string lastSub = mainString.Substring(startIndex + redSub.Length);
                             string totalString = firstSub + "\u001b[31m" + redSub + "\u001b[0m" + lastSub;
 
                             Console.WriteLine(totalString);
