@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Numerics;
 using System.Runtime.InteropServices;
 
 class Program
@@ -11,7 +12,7 @@ class Program
 
         static void FindSequenceOfNumbersAndTurnRed(string mainString)
         {
-            List<ulong> numbers = new List<ulong>();
+            List<BigInteger> numbers = new List<BigInteger>();
             Console.WriteLine();
             for (int i = 0; i < mainString.Length; i++)
             {
@@ -25,8 +26,7 @@ class Program
                     {
                         bool hasLetters = false;
                         for (int j = i + 1; j < nextIndex; j++)
-                        {
-                            
+                        {   
                             if (char.IsLetter(mainString[j]) || !char.IsLetterOrDigit(mainString[j]))
                             {
                                 hasLetters = true;
@@ -42,16 +42,18 @@ class Program
 
                             Console.WriteLine(totalString);
 
-                            ulong parsedNumbers = UInt64.Parse(redSub);
+
+                            BigInteger parsedNumbers = BigInteger.Parse(redSub);
                             numbers.Add(parsedNumbers);
+
                         }           
                     }
                 }          
             }
-            ulong result = 0;
-            foreach (ulong number in numbers)
+            BigInteger result = 0;
+            foreach (BigInteger number in numbers)
             {
-                result += (ulong)number;
+                result += (BigInteger)number;
             }
             Console.WriteLine();
             Console.WriteLine($"The total of all highlighted numbers are: {result}");
